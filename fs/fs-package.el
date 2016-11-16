@@ -25,7 +25,9 @@
 		 company-irony
 		 flycheck
 		 company-c-headers
-		 cmake-mode))
+		 cmake-mode
+		 ggtags
+		 ))
 	 
 
 (package-initialize)

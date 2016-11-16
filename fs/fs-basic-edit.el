@@ -13,3 +13,9 @@
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-clang-executable "/usr/bin/clang-3.8")
 
+;;ido
+(require 'ido)
+(ido-mode t)
+
+;;linum-mode
+(global-linum-mode t)
