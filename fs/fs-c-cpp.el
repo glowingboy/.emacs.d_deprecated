@@ -37,7 +37,10 @@
 (require 'flycheck)
 (add-hook 'c++-mode-hook 'flycheck-mode)
 (add-hook 'c-mode-hook 'flycheck-mode)
-
+(add-hook 'c++-mode-hook (lambda ()
+			   (
+			    setq flycheck-gcc-language-standard "c++11"
+			    )))
 ;;flycheck-irony
 ;(eval-after-load 'flycheck
 ;  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
