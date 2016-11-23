@@ -1,4 +1,7 @@
 (provide 'fs-c-cpp)
+
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+
 ;;sematic
 (require 'cc-mode)
 (require 'semantic)
