@@ -2,6 +2,13 @@
 (add-to-list 'load-path
 	     (substitute-in-file-name "$HOME/.emacs.d/fs"))
 
+(add-to-list 'load-path
+	     (substitute-in-file-name "$HOME/.emacs.d/fs_ThirdParty"))
+
+;;common lisp extension
+;;needed by other packages like, ppindent
+(require 'cl)
+
 ;;fs-package
 (require 'fs-package)
 

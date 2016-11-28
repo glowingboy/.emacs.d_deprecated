@@ -2,6 +2,9 @@
 
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
+(require 'ppindent)
+
+
 ;;sematic
 (require 'cc-mode)
 (require 'semantic)
