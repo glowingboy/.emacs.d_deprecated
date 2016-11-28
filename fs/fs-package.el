@@ -27,6 +27,7 @@
 		 company-c-headers
 		 cmake-mode
 		 ggtags
+		 lua-mode
 		 ))
 	 
 
