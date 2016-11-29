@@ -28,6 +28,7 @@
 		 cmake-mode
 		 ggtags
 		 lua-mode
+		 android-mode
 		 ))
 	 
 
