@@ -4,7 +4,7 @@
 
 (require 'ppindent)
 
-
+(setq gdb-many-windows t)
 ;;sematic
 (require 'cc-mode)
 (require 'semantic)
