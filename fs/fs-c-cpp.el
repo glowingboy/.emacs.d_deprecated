@@ -1,10 +1,16 @@
 (provide 'fs-c-cpp)
 
+;;fs-project
+(require 'fs-project)
+;;open header file with c++ mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
+;;ppindent
 (require 'ppindent)
 
+;;gud-gdb
 (setq gdb-many-windows t)
+
 ;;sematic
 (require 'cc-mode)
 (require 'semantic)
@@ -13,6 +19,12 @@
 (semantic-mode 1)
 (semantic-add-system-include "/usr/include")
 (semantic-add-system-include "/usr/include/w32api")
+
+;;projectile
+;(require 'projectile)
+;(add-hook 'c-mode-hook 'projectile-mode)
+;(add-hook 'c++-mode-hook 'projectile-mode)
+;(setq projectile-indexing-method 'native)
 
 ;;company
 (require 'cc-mode)
