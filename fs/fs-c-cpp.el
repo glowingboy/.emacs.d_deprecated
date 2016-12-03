@@ -1,7 +1,5 @@
 (provide 'fs-c-cpp)
 
-;;fs-project
-(require 'fs-project)
 ;;open header file with c++ mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
@@ -11,7 +9,7 @@
 ;;gud-gdb
 (setq gdb-many-windows t)
 
-;;sematic
+;;semantic
 (require 'cc-mode)
 (require 'semantic)
 (global-semanticdb-minor-mode 1)
@@ -85,3 +83,23 @@
 (define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
 
 (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
+
+
+
+;;add include path
+(defun fs-add-usr-include-path (path)
+  "add include path to semantic, company, company-c-headers, flycheck"
+  (interactive "Duser-include-path:")
+  (add-to-list 'company-c-headers-path-user path)
+  )
+
+
+(defun fs-add-system-include-path (path)
+  "add include path to semantic, company, company-c-headers, flycheck"
+  (interactive "Duser-include-path:")
+  (add-to-list 'company-c-headers-path-system path)
+  )
+
+
+;;fs-project
+(require 'fs-project)
