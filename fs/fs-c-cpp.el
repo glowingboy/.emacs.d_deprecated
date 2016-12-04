@@ -91,6 +91,8 @@
   "add include path to semantic, company, company-c-headers, flycheck"
   (interactive "Duser-include-path:")
   (add-to-list 'company-c-headers-path-user path)
+  (add-to-list 'company-clang-arguments (concat "-I" path))
+  (add-to-list 'flycheck-gcc-include-path path)
   )
 
 
@@ -98,6 +100,8 @@
   "add include path to semantic, company, company-c-headers, flycheck"
   (interactive "Duser-include-path:")
   (add-to-list 'company-c-headers-path-system path)
+    (add-to-list 'company-clang-arguments (concat "-I" path))
+  (add-to-list 'flycheck-gcc-include-path path)
   )
 
 

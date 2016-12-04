@@ -86,11 +86,32 @@ nil fs-proj-file nil nil nil t)
 
 (defun fs-p-delete-proj-file ()
   (interactive)
-(setq fs-proj-file nil)  
-)
+  (setq fs-proj-file nil)  
+  )
 
 (defun fs-p-refresh-proj-file()
   (interactive)
   (setq fs-proj-file nil)
   (fs-p-check-proj-file)
   )
+
+(defconst CLASS-BORN-WITH
+  "class %s
+{
+
+};"
+  )
+
+(defun fs-p-create-class (name path)
+  (interactive "sclass name:
+Dpath:")
+  (let ((class-content (format CLASS-BORN-WITH name)) (class-name (concat path "/" name ".h")))
+    (message "class-name:%s" class-name)
+    (write-region class-content nil class-name nil nil nil t)
+    
+    (setq class-name (concat path "/" name ".cpp"))
+    (message "class-name@%s" class-name)
+    (write-region "" nil class-name nil nil nil t)
+    )
+  )
+
