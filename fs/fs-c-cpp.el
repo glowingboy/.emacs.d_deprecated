@@ -10,13 +10,13 @@
 (setq gdb-many-windows t)
 
 ;;semantic
-(require 'cc-mode)
-(require 'semantic)
-(global-semanticdb-minor-mode 1)
-(global-semantic-idle-scheduler-mode 1)
-(semantic-mode 1)
-(semantic-add-system-include "/usr/include")
-(semantic-add-system-include "/usr/include/w32api")
+;; (require 'cc-mode)
+;; (require 'semantic)
+;; (global-semanticdb-minor-mode 1)
+;; (global-semantic-idle-scheduler-mode 1)
+;; (semantic-mode 1)
+;; (semantic-add-system-include "/usr/include")
+;(semantic-add-system-include "/usr/include/w32api")
 
 ;;projectile
 ;(require 'projectile)
@@ -26,10 +26,11 @@
 
 ;;company
 (require 'cc-mode)
-(setq company-backends (delete 'company-semantic company-backends))
 (define-key c-mode-map [(tab)] 'company-complete)
 (define-key c++-mode-map [(tab)] 'company-complete)
-(setq company-clang-arguments '("-I/usr/include"))
+(setq company-idle-delay 0)
+;;(setq company-clang-arguments '("-I/usr/include"))
+
 ;;irony
 (require 'irony)
 (add-hook 'c++-mode-hook 'irony-mode)
@@ -44,8 +45,18 @@
 (setq w32-pipe-read-delay 0)
 
 ;;company-irony
+(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+(setq company-backends (delete 'company-semantic company-backends))
+; (eval-after-load 'company
+;  '(add-to-list 'company-backends 'company-irony))
+
+
+;;company-irony-c-headers
+(require 'company-irony-c-headers)
 (eval-after-load 'company
-  '(add-to-list 'company-backends 'company-irony))
+  '(add-to-list
+    'company-backends '(company-irony-c-headers company-irony)))
+
 ;;flycheck
 (require 'flycheck)
 (add-hook 'c++-mode-hook 'flycheck-mode)
@@ -55,19 +66,15 @@
 			    setq flycheck-gcc-language-standard "c++11"
 			    )))
 ;;flycheck-irony
-;(eval-after-load 'flycheck
-;  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
-;;company-irony-c-headers
-;(require 'company-irony-c-headers)
-;(eval-after-load 'company
-;  '(add-to-list
-;    'company-backends '(company-irony-c-headers company-irony)))
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+
 
 ;;company-c-headers
-(require 'company-c-headers)
-(add-to-list 'company-backends 'company-c-headers)
-(add-to-list 'company-c-headers-path-system "/usr/include")
-(add-to-list 'company-c-headers-path-system "/usr/include/w32api")
+;; (require 'company-c-headers)
+;; (add-to-list 'company-backends 'company-c-headers)
+;; (add-to-list 'company-c-headers-path-system "/usr/include")
+;(add-to-list 'company-c-headers-path-system "/usr/include/w32api")
 
 
 
@@ -106,4 +113,4 @@
 
 
 ;;fs-project
-(require 'fs-project)
+;(require 'fs-project)

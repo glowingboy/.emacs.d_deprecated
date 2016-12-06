@@ -24,7 +24,9 @@
 		 irony
 		 company-irony
 		 flycheck
-		 company-c-headers
+		 flycheck-irony
+;		 company-c-headers
+		 company-irony-c-headers
 		 cmake-mode
 		 ggtags
 		 lua-mode

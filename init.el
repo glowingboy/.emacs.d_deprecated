@@ -35,7 +35,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (android-mode lua-mode ggtags cmake-mode company-c-headers smartparens company-irony))))
+    (company-irony-c-headers conpany-irony-c-headers flycheck-irony android-mode lua-mode ggtags cmake-mode company-c-headers smartparens company-irony))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
