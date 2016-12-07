@@ -20,17 +20,23 @@
 
 (touch-package '(dash
 		 smartparens
-		 company
-		 irony
-		 company-irony
+		 fuzzy
+		 yasnippet
+		 auto-complete
+		 auto-complete-c-headers
+		 auto-complete-clang
+;		 company
+;		 irony
+;		 company-irony
 		 flycheck
-		 flycheck-irony
+;		 flycheck-irony
 ;		 company-c-headers
-		 company-irony-c-headers
+;		 company-irony-c-headers
 		 cmake-mode
 		 ggtags
 		 lua-mode
 		 android-mode
+		 w3
 		 ))
 	 
 

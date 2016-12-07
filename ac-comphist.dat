@@ -1,0 +1,58 @@
+((("func" .
+   [1 0 0 0])
+  ("ac-clang-flags" .
+   [0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("/usr/include/w32api" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("/usr/include" .
+   [0 0 0 0 0 0 0 0 0 0 0 1])
+  ("ac-clang-executable" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("auto-complete-clang" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0])
+  ("require" .
+   [0 0 0 1 0 0 0])
+  ("ac-source-yasnippet" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0])
+  ("add-to-list" .
+   [0 0 0 0 0 0 3 1 0 0 1])
+  ("ac-sources" .
+   [0 0 0 0 1 2 0 1 0 0])
+  ("defun" .
+   [0 0 0 3 0])
+  ("yas-snippet-dirs" .
+   [0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0])
+  ("setq" .
+   [3 0 0 0])
+  ("yas-global-mode" .
+   [0 0 0 0 1 0 0 0 0 0 0 0 0 0 0])
+  ("lua_newuserdata" .
+   [0 1 0 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("include" .
+   [0 0 0 0 0 0 1])
+  ("lua" .
+   [0 0 1])
+  ("ThirdPartyLib" .
+   [0 0 0 0 0 0 0 0 0 0 0 0 1])
+  ("ac-use-menu-map" .
+   [0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("s" .
+   [1])
+  ("a" .
+   [2])
+  ("ac-source" .
+   [0 0 0 0 0 0 0 0 1])
+  ("ac-source-clang" .
+   [0 0 0 0 0 0 0 0 0 0 1 1 0 0 0])
+  ("add-hook" .
+   [0 0 0 0 0 1 0 0])
+  ("c++-mode-hook" .
+   [0 0 0 0 0 0 0 0 0 0 1 0 0])
+  ("fs-ac-clang-config" .
+   [0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0])
+  ("expt" .
+   [0 0 0 1])
+  ("expand-file-name" .
+   [0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0])
+  ("path" .
+   [2 0 0 0])))

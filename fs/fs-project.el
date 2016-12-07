@@ -54,10 +54,10 @@
 	(progn
 	  (load-file fs-proj-file)
 	  (dolist (path fs-proj-usr-include-path)
-	    (fs-add-usr-include-path path)
+	    (fs-add-usr-include-path (expand-file-name path))
 	    )
 	  (dolist (path fs-proj-system-include-path)
-	    (fs-add-system-include-path path))
+	    (fs-add-system-include-path (expand-file-name path)))
 	  )
       (message "proj file not found")
       )

@@ -1,5 +1,12 @@
 (provide 'fs-c-cpp)
 
+;;doxymacs
+;;http://doxymacs.sourceforge.net/
+(require 'doxymacs)
+(add-hook 'c++-mode-hook 'doxymacs-mode)
+(add-hook 'c-mode-hook 'doxymacs-mode)
+(setq doxymacs-doxygen-style "C++")
+
 ;;open header file with c++ mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
@@ -12,12 +19,38 @@
 ;;semantic
 ;; (require 'cc-mode)
 ;; (require 'semantic)
+;; (semantic-mode t)
 ;; (global-semanticdb-minor-mode 1)
 ;; (global-semantic-idle-scheduler-mode 1)
-;; (semantic-mode 1)
 ;; (semantic-add-system-include "/usr/include")
-;(semantic-add-system-include "/usr/include/w32api")
+;; (defun fs:add-semantic-to-ac ()
+;;   (add-to-list 'ac-sources 'ac-source-semantic))
+;; (add-hook 'c++-mode-hook 'fs:add-semantic-to-ac)
+;; (add-hook 'c-mode-hook 'fs:add-semantic-to-ac)
+;; (require 'semantic/ia)
 
+;;auto-complete-c-headers
+(defun fs:ac-c-headers-init ()
+  (require 'auto-complete-c-headers)
+  (add-to-list 'ac-sources 'ac-source-c-headers)
+  )
+(add-hook 'c++-mode-hook 'fs:ac-c-headers-init)
+(add-hook 'c-mode-hook 'fs:ac-c-headers-init)
+
+;;auto-complet-clang
+(require 'auto-complete-clang)
+(defun fs-ac-clang-config ()
+  (add-to-list 'ac-sources 'ac-source-clang)
+  )
+
+(add-hook 'c++-mode-hook 'fs-ac-clang-config)
+(add-hook 'c-mode-hook 'fs-ac-clang-config)
+
+
+;(add-to-list 'ac-sources 'ac-source-clang)
+(setq ac-clang-executable "/usr/bin/clang-3.8")
+(setq ac-clang-flags '("-I/usr/include"
+		       ))
 ;;projectile
 ;(require 'projectile)
 ;(add-hook 'c-mode-hook 'projectile-mode)
@@ -25,37 +58,37 @@
 ;(setq projectile-indexing-method 'native)
 
 ;;company
-(require 'cc-mode)
-(define-key c-mode-map [(tab)] 'company-complete)
-(define-key c++-mode-map [(tab)] 'company-complete)
-(setq company-idle-delay 0)
+;; (require 'cc-mode)
+;; (define-key c-mode-map [(tab)] 'company-complete)
+;; (define-key c++-mode-map [(tab)] 'company-complete)
+;; (setq company-idle-delay 0)
 ;;(setq company-clang-arguments '("-I/usr/include"))
 
 ;;irony
-(require 'irony)
-(add-hook 'c++-mode-hook 'irony-mode)
-(add-hook 'c-mode-hook 'irony-mode)
-(defun my-irony-mode-hook()
-  (define-key irony-mode-map [remap completion-at-point]
-    'irony-completion-at-point-async)
-  (define-key irony-mode-map [remap complete-symbol]
-    'irony-completion-at-point-async))
-(add-hook 'irony-mode-hook 'my-irony-mode-hook)
-(add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
-(setq w32-pipe-read-delay 0)
+;; (require 'irony)
+;; (add-hook 'c++-mode-hook 'irony-mode)
+;; (add-hook 'c-mode-hook 'irony-mode)
+;; (defun my-irony-mode-hook()
+;;   (define-key irony-mode-map [remap completion-at-point]
+;;     'irony-completion-at-point-async)
+;;   (define-key irony-mode-map [remap complete-symbol]
+;;     'irony-completion-at-point-async))
+;; (add-hook 'irony-mode-hook 'my-irony-mode-hook)
+;; (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+;; (setq w32-pipe-read-delay 0)
 
 ;;company-irony
-(add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-(setq company-backends (delete 'company-semantic company-backends))
+;; (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+;; (setq company-backends (delete 'company-semantic company-backends))
 ; (eval-after-load 'company
 ;  '(add-to-list 'company-backends 'company-irony))
 
 
 ;;company-irony-c-headers
-(require 'company-irony-c-headers)
-(eval-after-load 'company
-  '(add-to-list
-    'company-backends '(company-irony-c-headers company-irony)))
+;; (require 'company-irony-c-headers)
+;; (eval-after-load 'company
+;;   '(add-to-list
+;;     'company-backends '(company-irony-c-headers company-irony)))
 
 ;;flycheck
 (require 'flycheck)
@@ -66,8 +99,8 @@
 			    setq flycheck-gcc-language-standard "c++11"
 			    )))
 ;;flycheck-irony
-(eval-after-load 'flycheck
-  '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
+;; (eval-after-load 'flycheck
+;;   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
 
 
 ;;company-c-headers
@@ -97,20 +130,27 @@
 (defun fs-add-usr-include-path (path)
   "add include path to semantic, company, company-c-headers, flycheck"
   (interactive "Duser-include-path:")
-  (add-to-list 'company-c-headers-path-user path)
-  (add-to-list 'company-clang-arguments (concat "-I" path))
+  ;; (add-to-list 'company-c-headers-path-user path)
+  ;; (add-to-list 'company-clang-arguments (concat "-I" path))
   (add-to-list 'flycheck-gcc-include-path path)
-  )
+;;  (add-to-list 'semanticdb-project-roots path)
+  (add-to-list 'achead:include-directories path)
+
+  (add-to-list 'ac-clang-flags (concat "-I" path)
+  ))
 
 
 (defun fs-add-system-include-path (path)
   "add include path to semantic, company, company-c-headers, flycheck"
   (interactive "Duser-include-path:")
-  (add-to-list 'company-c-headers-path-system path)
-    (add-to-list 'company-clang-arguments (concat "-I" path))
+  ;; (add-to-list 'company-c-headers-path-system path)
+  ;;   (add-to-list 'company-clang-arguments (concat "-I" path))
   (add-to-list 'flycheck-gcc-include-path path)
-  )
+    (add-to-list 'achead:include-directories path)
+    ;;(semantic-add-system-include path)
+      (add-to-list 'ac-clang-flags (concat "-I" path)
+  ))
 
 
 ;;fs-project
-;(require 'fs-project)
+(require 'fs-project)
