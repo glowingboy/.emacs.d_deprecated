@@ -29,7 +29,7 @@
 (setq company-backends (delete 'company-semantic company-backends))
 (define-key c-mode-map [(tab)] 'company-complete)
 (define-key c++-mode-map [(tab)] 'company-complete)
-(setq company-idle-delay 0)
+;;(setq company-idle-delay 0)
 (setq company-clang-executable "/usr/bin/clang-3.8")
 (setq company-clang-arguments '("-I/usr/include"))
 
@@ -113,6 +113,6 @@
   (add-to-list 'flycheck-gcc-include-path path)
   )
 
-
 ;;fs-project
 (require 'fs-project)
+

@@ -21,12 +21,12 @@
 (touch-package '(dash
 		 smartparens
 		 company
-		 irony
-		 company-irony
+;		 irony
+;		 company-irony
 		 flycheck
-		 flycheck-irony
-;		 company-c-headers
-		 company-irony-c-headers
+;		 flycheck-irony
+		 company-c-headers
+;		 company-irony-c-headers
 		 cmake-mode
 		 ggtags
 		 lua-mode

@@ -1,4 +1,5 @@
 (provide 'fs-basic-edit)
+
 ;;smartparens
 (require 'smartparens-config)
 (setq sp-base-key-bindings 'paredit)
