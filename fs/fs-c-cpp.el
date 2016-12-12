@@ -26,12 +26,16 @@
 
 ;;company
 (require 'cc-mode)
+(defun fs-company-c-setup ()
 (setq company-backends (delete 'company-semantic company-backends))
-(define-key c-mode-map [(tab)] 'company-complete)
-(define-key c++-mode-map [(tab)] 'company-complete)
+
+)
+(add-hook 'c-mode-common-hook 'fs-company-c-setup)
+;;(define-key c-mode-map [(tab)] 'company-complete)
+;;(define-key c++-mode-map [(tab)] 'company-complete)
 ;;(setq company-idle-delay 0)
-(setq company-clang-executable "/usr/bin/clang-3.8")
-(setq company-clang-arguments '("-I/usr/include"))
+;;(setq company-clang-executable "/usr/bin/clang-3.8")
+;;(setq company-clang-arguments '("-I/usr/include"))
 
 ;;irony
 ;; (require 'irony)
@@ -81,17 +85,17 @@
 
 
 ;;ggtags
-(require 'ggtags)
-(add-hook 'c-mode-hook 'ggtags-mode)
-(add-hook 'c++-mode-hook 'ggtags-mode)
-(define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
-(define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
-(define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
-(define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
-(define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
-(define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
+;; (require 'ggtags)
+;; (add-hook 'c-mode-hook 'ggtags-mode)
+;; (add-hook 'c++-mode-hook 'ggtags-mode)
+;; (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
+;; (define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
+;; (define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
+;; (define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
+;; (define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
+;; (define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
 
-(define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
+;; (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
 
 
 
@@ -100,7 +104,7 @@
   "add include path to semantic, company, company-c-headers, flycheck"
   (interactive "Duser-include-path:")
   (add-to-list 'company-c-headers-path-user path)
-  (add-to-list 'company-clang-arguments (concat "-I" path))
+;;  (add-to-list 'company-clang-arguments (concat "-I" path))
   (add-to-list 'flycheck-gcc-include-path path)
   )
 
@@ -109,10 +113,12 @@
   "add include path to semantic, company, company-c-headers, flycheck"
   (interactive "Duser-include-path:")
   (add-to-list 'company-c-headers-path-system path)
-    (add-to-list 'company-clang-arguments (concat "-I" path))
+  ;;  (add-to-list 'company-clang-arguments (concat "-I" path))
   (add-to-list 'flycheck-gcc-include-path path)
   )
 
 ;;fs-project
 (require 'fs-project)
 
+;;rtags
+(require 'fs-rtags)

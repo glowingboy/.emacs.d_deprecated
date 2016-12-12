@@ -20,6 +20,7 @@
 
 (touch-package '(dash
 		 smartparens
+		 rtags
 		 company
 ;		 irony
 ;		 company-irony
@@ -28,7 +29,7 @@
 		 company-c-headers
 ;		 company-irony-c-headers
 		 cmake-mode
-		 ggtags
+;;		 ggtags
 		 lua-mode
 		 android-mode
 		 ))

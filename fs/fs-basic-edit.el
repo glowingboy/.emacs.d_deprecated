@@ -12,6 +12,10 @@
 ;;company
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
+(setq company-backends (delete 'company-clang company-backends))
+(require 'cc-mode)
+(global-key-binding [(tab)] 'company-complete)
+
 
 ;;ido
 ;(require 'ido)
