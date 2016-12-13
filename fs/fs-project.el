@@ -111,7 +111,7 @@ Dpath:")
     
     (setq class-name (concat path "/" name ".cpp"))
     (message "class-name@%s" class-name)
-    (write-region "" nil class-name nil nil nil t)
+    (write-region (concat "#pragma once \n#include \"" name ".h\"") nil class-name nil nil nil t)
     )
   )
 
