@@ -80,7 +80,7 @@
 (require 'company-c-headers)
 (add-to-list 'company-backends 'company-c-headers)
 (add-to-list 'company-c-headers-path-system "/usr/include")
-;(add-to-list 'company-c-headers-path-system "/usr/include/w32api")
+(add-to-list 'company-c-headers-path-system "/usr/include/w32api")
 
 
 
@@ -105,7 +105,7 @@
   (interactive "Duser-include-path:")
   (add-to-list 'company-c-headers-path-user path)
 ;;  (add-to-list 'company-clang-arguments (concat "-I" path))
-  (add-to-list 'flycheck-gcc-include-path path)
+;;  (add-to-list 'flycheck-gcc-include-path path)
   )
 
 
@@ -114,7 +114,7 @@
   (interactive "Duser-include-path:")
   (add-to-list 'company-c-headers-path-system path)
   ;;  (add-to-list 'company-clang-arguments (concat "-I" path))
-  (add-to-list 'flycheck-gcc-include-path path)
+;;  (add-to-list 'flycheck-gcc-include-path path)
   )
 
 ;;fs-project

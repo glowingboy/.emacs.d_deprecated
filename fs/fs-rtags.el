@@ -2,6 +2,7 @@
 
 (require 'rtags)
 (add-hook 'c-mode-common-hook 'rtags-start-process-unless-running)
+(add-hook 'c++-mode-common-hook 'rtags-start-process-unless-running)
 
 (setq rtags-autostart-diagnostics t)
 (setq rtags-completions-enabled t)

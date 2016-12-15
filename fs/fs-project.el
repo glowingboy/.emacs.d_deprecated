@@ -96,7 +96,7 @@ nil fs-proj-file nil nil nil t)
   )
 
 (defconst CLASS-BORN-WITH
-  "class %s
+  "#pragma once \nclass %s
 {
 
 };"
@@ -111,7 +111,7 @@ Dpath:")
     
     (setq class-name (concat path "/" name ".cpp"))
     (message "class-name@%s" class-name)
-    (write-region (concat "#pragma once \n#include \"" name ".h\"") nil class-name nil nil nil t)
+    (write-region (concat "#include \"" name ".h\"") nil class-name nil nil nil t)
     )
   )
 
