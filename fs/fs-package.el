@@ -20,6 +20,7 @@
 
 (touch-package '(dash
 		 smartparens
+		 ace-window
 		 rtags
 		 company
 ;		 irony
