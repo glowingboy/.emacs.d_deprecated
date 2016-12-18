@@ -6,8 +6,6 @@
 ;;ppindent
 (require 'ppindent)
 
-;;gud-gdb
-(setq gdb-many-windows t)
 
 ;;semantic
 ;; (require 'cc-mode)
@@ -122,3 +120,6 @@
 
 ;;rtags
 (require 'fs-rtags)
+
+;;fs-debug
+(require 'fs-debug)
