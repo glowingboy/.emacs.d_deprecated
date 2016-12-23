@@ -34,6 +34,7 @@
 		 lua-mode
 		 glsl-mode
 		 android-mode
+		 csharp-mode
 		 ))
 	 
 
