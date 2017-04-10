@@ -19,7 +19,7 @@
 (require 'fs-basic-edit)
 
 ;;fs-c-cpp
-(require 'fs-c-cpp)
+;;(require 'fs-c-cpp)
 
 
 ;; Added by Package.el.  This must come before configurations of
