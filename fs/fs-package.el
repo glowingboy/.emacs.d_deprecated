@@ -32,6 +32,7 @@
 		 cmake-mode
 ;;		 ggtags
 		 lua-mode
+		 company-lua
 		 glsl-mode
 		 android-mode
 		 csharp-mode
