@@ -24,6 +24,9 @@
 ;;fs-lua
 (require 'fs-lua)
 
+;;fs-python
+(require 'fs-python)
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
@@ -37,7 +40,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-lua csharp-mode glsl-mode ace-window android-mode lua-mode ggtags cmake-mode smartparens))))
+    (elpy company-lua glsl-mode ace-window lua-mode ggtags cmake-mode smartparens))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

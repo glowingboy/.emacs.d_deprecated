@@ -1,9 +1,10 @@
 (provide 'fs-package)
 (require 'package)
 (add-to-list 'package-archives
-	     '("popkit" . "https://elpa.popkit.org/packages/"))
+	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (when (< emacs-major-version 24)
-  (add-to-list 'packge-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(add-to-list 'package-archives
+	     '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-initialize t)
 (defun touch-package(packages)
   (mapcar
@@ -34,8 +35,9 @@
 		 lua-mode
 		 company-lua
 		 glsl-mode
-		 android-mode
-		 csharp-mode
+;;		 android-mode
+		 ;;		 csharp-mode
+		 elpy
 		 ))
 	 
 
