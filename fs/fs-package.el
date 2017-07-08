@@ -22,19 +22,19 @@
 (touch-package '(dash
 		 smartparens
 		 ace-window
-		 rtags
+;		 rtags
 		 company
 ;		 irony
 ;		 company-irony
-		 flycheck
+;		 flycheck
 ;		 flycheck-irony
-		 company-c-headers
+;		 company-c-headers
 ;		 company-irony-c-headers
-		 cmake-mode
+;		 cmake-mode
 ;;		 ggtags
 		 lua-mode
 		 company-lua
-		 glsl-mode
+;		 glsl-mode
 ;;		 android-mode
 		 ;;		 csharp-mode
 		 elpy
