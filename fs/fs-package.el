@@ -1,7 +1,7 @@
 (provide 'fs-package)
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa-stable" . "https://stable.melpa.org/packages/") t)
+	     '("melpa" . "http://melpa.org/packages/") t)
 (when (< emacs-major-version 24)
 (add-to-list 'package-archives
 	     '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -22,19 +22,21 @@
 (touch-package '(dash
 		 smartparens
 		 ace-window
+		 ggtags
+;;		 helm
 ;		 rtags
 		 company
-;		 irony
-;		 company-irony
-;		 flycheck
-;		 flycheck-irony
-;		 company-c-headers
-;		 company-irony-c-headers
-;		 cmake-mode
-;;		 ggtags
+		 irony
+		 company-irony
+		 flycheck
+		 flycheck-irony
+		 company-c-headers
+		 company-irony-c-headers
+		 cmake-mode
+		 ggtags
 		 lua-mode
 		 company-lua
-;		 glsl-mode
+		 glsl-mode
 ;;		 android-mode
 		 ;;		 csharp-mode
 		 elpy

@@ -1,6 +1,6 @@
 (provide 'fs-lua)
-(require 'company)
-(require 'company-lua)
+;;(require 'company)
+;;(require 'company-lua)
 
 
 

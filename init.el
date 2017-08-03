@@ -19,7 +19,7 @@
 (require 'fs-basic-edit)
 
 ;;fs-c-cpp
-;;(require 'fs-c-cpp)
+(require 'fs-c-cpp)
 
 ;;fs-lua
 (require 'fs-lua)
