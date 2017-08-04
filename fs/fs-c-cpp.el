@@ -32,7 +32,7 @@
 (delete 'company-semantic company-backends)
 ;;(define-key c-mode-map [(tab)] 'company-complete)
 ;;(define-key c++-mode-map [(tab)] 'company-complete)
-;;(setq company-idle-delay 0)
+(setq company-idle-delay 0)
 ;;(setq company-clang-executable "/usr/bin/clang-3.8")
 ;;(setq company-clang-arguments '("-I/usr/include"))
 
@@ -47,6 +47,13 @@
     'irony-completion-at-point-async))
 (add-hook 'irony-mode-hook 'my-irony-mode-hook)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+
+;;Windows performance tweaks
+(when (boundp 'w32-pipe-read-delay)
+  (setq w32-pipe-read-delay 0))
+;; Set the buffer size to 64K on Windows (from the original 4K)
+(when (boundp 'w32-pipe-buffer-size)
+  (setq irony-server-w32-pipe-buffer-size (* 64 1024)))
 
 
 ;;company-irony
@@ -88,6 +95,7 @@
 (add-hook 'c-mode-hook 'ggtags-mode)
 (add-hook 'c++-mode-hook 'ggtags-mode)
 (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
+(define-key ggtags-mode-map (kbd "C-c g d") 'ggtags-find-definition)
 (define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
 (define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
 (define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
@@ -123,4 +131,4 @@
 ;;(require 'fs-rtags)
 
 ;;fs-debug
-;;(require 'fs-debug)
+(require 'fs-debug)
