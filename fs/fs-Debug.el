@@ -1,4 +1,4 @@
-(provide 'fs-debug)
+(provide 'fs-Debug)
 
 ;;gud-gdb
 (setq gdb-many-windows t)

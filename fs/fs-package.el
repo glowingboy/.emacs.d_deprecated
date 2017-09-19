@@ -39,7 +39,7 @@
 		 glsl-mode
 ;;		 android-mode
 		 ;;		 csharp-mode
-		 elpy
+;		 elpy
 		 ))
 	 
 

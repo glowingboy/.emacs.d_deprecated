@@ -6,6 +6,13 @@
 ;;ppindent
 (require 'ppindent)
 
+;;key map setup
+(defun fs-cc-mode-key-map-config ()
+  (local-set-key (kbd "C-x C-o") 'ff-find-other-file)
+  )
+(add-hook 'c-mode-hook 'fs-cc-mode-key-map-config)
+(add-hook 'c++-mode-hook 'fs-cc-mode-key-map-config)
+
 
 ;;semantic
 ;; (require 'cc-mode)
@@ -76,17 +83,21 @@
 
 
 ;;company-c-headers
-;; (require 'company-c-headers)
-;; (add-to-list 'company-backends 'company-c-headers)
-;; (add-to-list 'company-c-headers-path-system "/usr/include")
-;; (add-to-list 'company-c-headers-path-system "/usr/include/w32api")
+(require 'company-c-headers)
+(add-to-list 'company-backends 'company-c-headers)
+(add-to-list 'company-c-headers-path-system "/usr/lib/gcc/x86_64-linux-gnu/5/include")
+(add-to-list 'company-c-headers-path-system "/usr/local/include")
+(add-to-list 'company-c-headers-path-system "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed")
+(add-to-list 'company-c-headers-path-system "/usr/include/x86_64-linux-gnu")
+(add-to-list 'company-c-headers-path-system "/usr/include")
+(add-to-list 'company-c-headers-path-system "/usr/include/c++/5")
 
-
-
+ 
 ;;ggtags
 (require 'ggtags)
 (add-hook 'c-mode-hook 'ggtags-mode)
 (add-hook 'c++-mode-hook 'ggtags-mode)
+(define-key ggtags-mode-map (kbd "C-c g d") 'ggtags-find-definition)
 (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
 (define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
 (define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
@@ -123,4 +134,4 @@
 ;;(require 'fs-rtags)
 
 ;;fs-debug
-;;(require 'fs-debug)
+(require 'fs-Debug)
