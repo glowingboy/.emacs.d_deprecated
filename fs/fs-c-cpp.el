@@ -1,5 +1,9 @@
 (provide 'fs-c-cpp)
 
+(setq c-default-style "linux"
+      c-basic-offset 4
+      )
+
 ;;open header file with c++ mode
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 
@@ -91,21 +95,21 @@
 (add-to-list 'company-c-headers-path-system "/usr/include/x86_64-linux-gnu")
 (add-to-list 'company-c-headers-path-system "/usr/include")
 (add-to-list 'company-c-headers-path-system "/usr/include/c++/5")
-
+(add-to-list 'company-c-headers-path-system "/usr/local")
  
 ;;ggtags
-(require 'ggtags)
-(add-hook 'c-mode-hook 'ggtags-mode)
-(add-hook 'c++-mode-hook 'ggtags-mode)
-(define-key ggtags-mode-map (kbd "C-c g d") 'ggtags-find-definition)
-(define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
-(define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
-(define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
-(define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
-(define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
-(define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
+;; (require 'ggtags)
+;; (add-hook 'c-mode-hook 'ggtags-mode)
+;; (add-hook 'c++-mode-hook 'ggtags-mode)
+;; (define-key ggtags-mode-map (kbd "C-c g d") 'ggtags-find-definition)
+;; (define-key ggtags-mode-map (kbd "C-c g s") 'ggtags-find-other-symbol)
+;; (define-key ggtags-mode-map (kbd "C-c g h") 'ggtags-view-tag-history)
+;; (define-key ggtags-mode-map (kbd "C-c g r") 'ggtags-find-reference)
+;; (define-key ggtags-mode-map (kbd "C-c g f") 'ggtags-find-file)
+;; (define-key ggtags-mode-map (kbd "C-c g c") 'ggtags-create-tags)
+;; (define-key ggtags-mode-map (kbd "C-c g u") 'ggtags-update-tags)
 
-(define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
+;; (define-key ggtags-mode-map (kbd "M-,") 'pop-tag-mark)
 
 
 
@@ -131,7 +135,7 @@
 (require 'fs-project)
 
 ;;rtags
-;;(require 'fs-rtags)
+(require 'fs-rtags)
 
 ;;fs-debug
 (require 'fs-Debug)

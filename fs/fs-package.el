@@ -22,18 +22,20 @@
 (touch-package '(dash
 		 smartparens
 		 ace-window
-		 ggtags
+;;		 ggtags
 ;;		 helm
-;		 rtags
 		 company
+		 rtags
+		 company-rtags
 		 irony
 		 company-irony
 		 flycheck
 		 flycheck-irony
+		 flycheck-rtags
 		 company-c-headers
 		 company-irony-c-headers
 		 cmake-mode
-		 ggtags
+;;		 ggtags
 		 lua-mode
 		 company-lua
 		 glsl-mode
