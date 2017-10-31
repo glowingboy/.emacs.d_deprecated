@@ -19,13 +19,13 @@
 (require 'fs-basic-edit)
 
 ;;fs-c-cpp
-(require 'fs-c-cpp)
+;;(require 'fs-c-cpp)
 
 ;;fs-lua
 (require 'fs-lua)
 
 ;;fs-python
-;(require 'fs-python)
+(require 'fs-python)
 
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
