@@ -26,9 +26,9 @@
     (jump-to-register fs-window-config-register)
   )
 (defun fs-gud-mode-key-hook ()
-  "chang q to my own quit"
-  (local-unset-key (kbd "q"))
-  (local-set-key (kbd "q") 'fs-gdb-quit)
+  "chang C-q to my own quit"
+  (local-unset-key (kbd "C-q"))
+  (local-set-key (kbd "C-q") 'fs-gdb-quit)
   )
 
 (add-hook 'gud-mode-hook 'fs-gud-mode-key-hook)
