@@ -27,13 +27,13 @@
 		 company
 		 rtags
 		 company-rtags
-		 irony
-		 company-irony
+;;		 irony
+;;		 company-irony
 		 flycheck
-		 flycheck-irony
+;;		 flycheck-irony
 		 flycheck-rtags
 		 company-c-headers
-		 company-irony-c-headers
+;;		 company-irony-c-headers
 		 cmake-mode
 ;;		 ggtags
 		 lua-mode
