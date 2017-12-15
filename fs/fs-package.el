@@ -1,5 +1,6 @@
 (provide 'fs-package)
 (require 'package)
+(setq package-archives)
 (add-to-list 'package-archives
 	     '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
 (when (< emacs-major-version 24)
@@ -23,15 +24,16 @@
 		 smartparens
 		 ace-window
 ;;		 ggtags
-;;		 helm
+		 ;;		 helm
+;;		 yasnippet
 		 company
-		 rtags
-		 company-rtags
+;;		 rtags
+;;		 company-rtags
 ;;		 irony
 ;;		 company-irony
 		 flycheck
 ;;		 flycheck-irony
-		 flycheck-rtags
+;;		 flycheck-rtags
 		 company-c-headers
 ;;		 company-irony-c-headers
 		 cmake-mode
@@ -41,7 +43,7 @@
 		 glsl-mode
 ;;		 android-mode
 		 ;;		 csharp-mode
-		 elpy
+;;		 elpy
 		 ))
 	 
 

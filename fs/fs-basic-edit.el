@@ -12,10 +12,9 @@
 ;;company
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
-(setq company-backends (delete 'company-clang company-backends))
 (setq company-idle-delay 0.1)
-
-
+;; (add-to-list 'company-backends 'company-yasnippet)
+;; (yas-global-mode)
 
 ;;ido
 					;(require 'ido)

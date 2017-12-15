@@ -17,77 +17,31 @@
 (add-hook 'c-mode-hook 'fs-cc-mode-key-map-config)
 (add-hook 'c++-mode-hook 'fs-cc-mode-key-map-config)
 
-
-;;semantic
-;; (require 'cc-mode)
-;; (require 'semantic)
-;; (global-semanticdb-minor-mode 1)
-;; (global-semantic-idle-scheduler-mode 1)
-;; (semantic-mode 1)
-;; (semantic-add-system-include "/usr/include")
-;(semantic-add-system-include "/usr/include/w32api")
-
-;;projectile
-;(require 'projectile)
-;(add-hook 'c-mode-hook 'projectile-mode)
-;(add-hook 'c++-mode-hook 'projectile-mode)
-;(setq projectile-indexing-method 'native)
-
 ;;company
 (require 'cc-mode)
 (defun fs-company-c-setup ()
-(setq company-backends (delete 'company-semantic company-backends))
+  (setq company-backends (delete 'company-semantic company-backends))
+;;  (add-to-list 'company-backends 'company-clang)
+  (add-to-list 'company-backends 'company-c-headers)
 
-)
+  )
+
 (add-hook 'c-mode-common-hook 'fs-company-c-setup)
-(delete 'company-semantic company-backends)
-;;(define-key c-mode-map [(tab)] 'company-complete)
-;;(define-key c++-mode-map [(tab)] 'company-complete)
-;;(setq company-idle-delay 0)
-;;(setq company-clang-executable "/usr/bin/clang-3.8")
-;;(setq company-clang-arguments '("-I/usr/include"))
 
-;;irony
-;; (require 'irony)
-;; (add-hook 'c++-mode-hook 'irony-mode)
-;; (add-hook 'c-mode-hook 'irony-mode)
-;; (defun my-irony-mode-hook()
-;;   (define-key irony-mode-map [remap completion-at-point]
-;;     'irony-completion-at-point-async)
-;;   (define-key irony-mode-map [remap complete-symbol]
-;;     'irony-completion-at-point-async))
-;; (add-hook 'irony-mode-hook 'my-irony-mode-hook)
-;; (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
+(setq company-clang-executable "clang")
 
-
-;;company-irony
-;; (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
-;; (eval-after-load 'company
-;;  '(add-to-list 'company-backends 'company-irony))
-
-;;company-irony-c-headers
-;; (require 'company-irony-c-headers)
-;; (eval-after-load 'company
-;;   '(add-to-list
-;;     'company-backends '(company-irony-c-headers company-irony)))
+(setq company-clang-arguments (list "-I/usr/local" "-std=c++11"))
 
 ;;flycheck
 (require 'flycheck)
 (add-hook 'c++-mode-hook 'flycheck-mode)
 (add-hook 'c-mode-hook 'flycheck-mode)
 (add-hook 'c++-mode-hook (lambda ()
-			   (
-			    setq flycheck-gcc-language-standard "c++11"
-				 )))
-
-;;flycheck-irony
-;; (eval-after-load 'flycheck
-;;   '(add-hook 'flycheck-mode-hook #'flycheck-irony-setup))
-
+			   (setq flycheck-clang-args (list "-I/usr/local" "-std=c++11"))
+				 ))
 
 ;;company-c-headers
 (require 'company-c-headers)
-(add-to-list 'company-backends 'company-c-headers)
 (add-to-list 'company-c-headers-path-system "/usr/lib/gcc/x86_64-linux-gnu/5/include")
 (add-to-list 'company-c-headers-path-system "/usr/local/include")
 (add-to-list 'company-c-headers-path-system "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed")
@@ -134,7 +88,7 @@
 (require 'fs-project)
 
 ;;rtags
-(require 'fs-rtags)
+;;(require 'fs-rtags)
 
 ;;fs-debug
 (require 'fs-Debug)
