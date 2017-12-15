@@ -12,8 +12,8 @@
 
 ;;disable menu bar, tool bar, scroll bar
 (menu-bar-mode -1)
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
+;;(tool-bar-mode -1)
+;;(scroll-bar-mode -1)
 
 ;;ace-window
 (global-set-key (kbd "C-x o") 'ace-window)
