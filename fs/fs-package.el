@@ -1,10 +1,10 @@
 (provide 'fs-package)
 (require 'package)
 (add-to-list 'package-archives
-	     '("melpa" . "http://melpa.org/packages/") t)
+	     '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
 (when (< emacs-major-version 24)
 (add-to-list 'package-archives
-	     '("gnu" . "http://elpa.gnu.org/packages/")))
+	     '("gnu" . "http://elpa.emacs-china.org/gnu/")))
 (package-initialize t)
 (defun touch-package(packages)
   (mapcar
