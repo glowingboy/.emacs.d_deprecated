@@ -1,6 +1,6 @@
 (provide 'fs-package)
 (require 'package)
-(setq package-archives)
+;;(setq package-archives)
 (add-to-list 'package-archives
 	     '("melpa" . "http://elpa.emacs-china.org/melpa/") t)
 (when (< emacs-major-version 24)
