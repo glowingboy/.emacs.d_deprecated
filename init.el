@@ -9,6 +9,8 @@
 ;;needed by other packages like, ppindent
 (require 'cl)
 
+(byte-recompile-directory (substitute-in-file-name "$HOME/.emacs.d/fs") 0)
+
 ;;fs-package
 (require 'fs-package)
 
@@ -18,9 +20,13 @@
 ;;fs-basic-edit
 (require 'fs-basic-edit)
 
+;;fs-elsip
+(require 'fs-elisp)
+
 ;;fs-c-cpp
 (require 'fs-c-cpp)
 
+(require 'fs-cmake)
 ;;fs-lua
 (require 'fs-lua)
 

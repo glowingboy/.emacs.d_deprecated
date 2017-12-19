@@ -20,10 +20,12 @@
 ;;company
 (require 'cc-mode)
 (defun fs-company-c-setup ()
-  (setq company-backends (delete 'company-semantic company-backends))
-;;  (add-to-list 'company-backends 'company-clang)
-  (add-to-list 'company-backends 'company-c-headers)
-
+  (setq company-backends (list
+			  'company-c-headers
+			  'company-clang
+			  'company-keywords
+			  )
+			  )
   )
 
 (add-hook 'c-mode-common-hook 'fs-company-c-setup)
@@ -31,40 +33,46 @@
 (setq company-clang-executable "clang")
 
 ;; using windows INCLUDE environment variable
-(setq sys_include_dirs (getenv "INCLUDE"))
-(setq lst_sys_include_dirs (split-string sys_include_dirs ";" t))
+(defvar fs-c-cpp-sys-include-dirs (split-string (getenv "INCLUDE") ";" t))
 ;;adding my system include dir
-(add-to-list 'lst_sys_include_dirs "C:\\Program Files (x86)")
-(setq lst_clang_include_dirs (copy-tree lst_sys_include_dirs))
+(add-to-list 'fs-c-cpp-sys-include-dirs "C:\\Program Files (x86)")
 
-(setq idx 0)
-(defconst len (safe-length lst_clang_include_dirs))
-(while (< idx len)
-  (let ((dir (nth idx lst_clang_include_dirs)))
-    (setcar (nthcdr idx lst_clang_include_dirs)
-  	    (concat "-I" dir)
-  	    )    
+(add-hook 'c-mode-common-hook (lambda ()
+				"setup ff-search-directories"
+				(setq ff-search-directories fs-c-cpp-sys-include-dirs)))
+
+(defvar fs-c-cpp-clang-args(copy-tree fs-c-cpp-sys-include-dirs))
+(let (
+      (idx 0)
+      (lstLen (safe-length fs-c-cpp-clang-args))
+      )
+  (while (< idx lstLen)
+    (let ((dir (nth idx fs-c-cpp-clang-args)))
+      (setcar (nthcdr idx fs-c-cpp-clang-args)
+	      (concat "-I" dir)
+	      )    
+      )
+    (setq idx (1+ idx)
+	  )
     )
-  (setq idx (1+ idx)
-	)
+
   )
 
-(setq clang-args lst_clang_include_dirs)
-(add-to-list 'clang-args "-std=c++11")
+(add-to-list 'fs-c-cpp-clang-args "-std=c++11")
 ;;
-(setq company-clang-arguments clang-args)
+(setq company-clang-arguments fs-c-cpp-clang-args)
 
 ;;flycheck
 ;; (require 'flycheck)
 ;; (add-hook 'c++-mode-hook 'flycheck-mode)
 ;; (add-hook 'c-mode-hook 'flycheck-mode)
 ;; (add-hook 'c++-mode-hook (lambda ()
-;; 			   (setq flycheck-clang-args clang-args
+;; 			   (setq flycheck-clang-args fs-c-cpp-clang-args
 ;; 				 )))
 
 ;;company-c-headers
 (require 'company-c-headers)
-(setq company-c-headers-path-system lst_sys_include_dirs)
+(setq company-c-headers-path-system fs-c-cpp-sys-include-dirs)
 
 ;;ggtags
 ;; (require 'ggtags)
