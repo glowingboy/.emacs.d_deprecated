@@ -13,22 +13,24 @@
 ;;key map setup
 (defun fs-cc-mode-key-map-config ()
   (local-set-key (kbd "C-x C-o") 'ff-find-other-file)
+  (local-unset-key (kbd "TAB"))
   )
 (add-hook 'c-mode-hook 'fs-cc-mode-key-map-config)
 (add-hook 'c++-mode-hook 'fs-cc-mode-key-map-config)
 
 ;;company
 (require 'cc-mode)
-(defun fs-company-c-setup ()
-  (setq company-backends (list
-			  'company-c-headers
-			  'company-clang
-			  'company-keywords
-			  )
-			  )
-  )
+;; (defun fs-company-c-setup ()
+;;   (setq company-backends (list
+;; 			  'company-c-headers
+;; 			  'company-clang
+;; 			  'company-keywords
+;; 			  )
+;; 			  )
+;;   )
 
-(add-hook 'c-mode-common-hook 'fs-company-c-setup)
+;; (add-hook 'c++-mode-hook 'fs-company-c-setup)
+;; (add-hook 'c-mode-hook 'fs-company-c-setup)
 
 (setq company-clang-executable "clang")
 
@@ -41,9 +43,9 @@
 				    "/usr/local"
 				    )
   )
-(add-hook 'c-mode-common-hook (lambda ()
-				"setup ff-search-directories"
-				(setq ff-search-directories fs-c-cpp-sys-include-dirs)))
+;; (add-hook 'c-mode-common-hook (lambda ()
+;; 				"setup ff-search-directories"
+;; 				(setq ff-search-directories fs-c-cpp-sys-include-dirs)))
 
 (defvar fs-c-cpp-clang-args(copy-tree fs-c-cpp-sys-include-dirs))
 (let (
@@ -64,19 +66,27 @@
 
 (add-to-list 'fs-c-cpp-clang-args "-std=c++11")
 ;;
-(setq company-clang-arguments fs-c-cpp-clang-args)
+;;(setq company-clang-arguments (list "-I/usr/local" "-std=c++11"))
+(setq company-clang-arguments (list "-I/usr/local" "-std=c++11"))
 
 ;;flycheck
 (require 'flycheck)
 (add-hook 'c++-mode-hook 'flycheck-mode)
 (add-hook 'c-mode-hook 'flycheck-mode)
 (add-hook 'c++-mode-hook (lambda ()
-			   (setq flycheck-clang-args fs-c-cpp-clang-args
-				 )))
+			     (setq flycheck-clang-args (list "-I/usr/local" "-std=c++11"))
+			     ))
 
 ;;company-c-headers
 (require 'company-c-headers)
-(setq company-c-headers-path-system fs-c-cpp-sys-include-dirs)
+;;(setq company-c-headers-path-system fs-c-cpp-sys-include-dirs)
+(add-to-list 'company-c-headers-path-system "/usr/lib/gcc/x86_64-linux-gnu/5/include")
+(add-to-list 'company-c-headers-path-system "/usr/local/include")
+(add-to-list 'company-c-headers-path-system "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed")
+(add-to-list 'company-c-headers-path-system "/usr/include/x86_64-linux-gnu")
+(add-to-list 'company-c-headers-path-system "/usr/include")
+(add-to-list 'company-c-headers-path-system "/usr/include/c++/5")
+(add-to-list 'company-c-headers-path-system "/usr/local")
 
 ;;ggtags
 ;; (require 'ggtags)

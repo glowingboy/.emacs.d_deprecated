@@ -13,8 +13,8 @@
 (require 'company)
 (add-hook 'after-init-hook 'global-company-mode)
 (setq company-idle-delay 0)
-(setq w32-pipe-read-delay 0)
-(setq company-minimum-prefix-length 1)
+
+;;(setq w32-pipe-read-delay 0)
 
 ;; (add-to-list 'company-backends 'company-yasnippet)
 ;; (yas-global-mode)
