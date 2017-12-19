@@ -30,26 +30,42 @@
 
 (setq company-clang-executable "clang")
 
-(setq company-clang-arguments (list "-I/usr/local" "-std=c++11"))
+;; using windows INCLUDE environment variable
+(setq sys_include_dirs (getenv "INCLUDE"))
+(setq lst_sys_include_dirs (split-string sys_include_dirs ";" t))
+;;adding my system include dir
+(add-to-list 'lst_sys_include_dirs "C:\\Program Files (x86)")
+(setq lst_clang_include_dirs (copy-tree lst_sys_include_dirs))
+
+(setq idx 0)
+(defconst len (safe-length lst_clang_include_dirs))
+(while (< idx len)
+  (let ((dir (nth idx lst_clang_include_dirs)))
+    (setcar (nthcdr idx lst_clang_include_dirs)
+  	    (concat "-I" dir)
+  	    )    
+    )
+  (setq idx (1+ idx)
+	)
+  )
+
+(setq clang-args lst_clang_include_dirs)
+(add-to-list 'clang-args "-std=c++11")
+;;
+(setq company-clang-arguments clang-args)
 
 ;;flycheck
-(require 'flycheck)
-(add-hook 'c++-mode-hook 'flycheck-mode)
-(add-hook 'c-mode-hook 'flycheck-mode)
-(add-hook 'c++-mode-hook (lambda ()
-			   (setq flycheck-clang-args (list "-I/usr/local" "-std=c++11"))
-				 ))
+;; (require 'flycheck)
+;; (add-hook 'c++-mode-hook 'flycheck-mode)
+;; (add-hook 'c-mode-hook 'flycheck-mode)
+;; (add-hook 'c++-mode-hook (lambda ()
+;; 			   (setq flycheck-clang-args clang-args
+;; 				 )))
 
 ;;company-c-headers
 (require 'company-c-headers)
-(add-to-list 'company-c-headers-path-system "/usr/lib/gcc/x86_64-linux-gnu/5/include")
-(add-to-list 'company-c-headers-path-system "/usr/local/include")
-(add-to-list 'company-c-headers-path-system "/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed")
-(add-to-list 'company-c-headers-path-system "/usr/include/x86_64-linux-gnu")
-(add-to-list 'company-c-headers-path-system "/usr/include")
-(add-to-list 'company-c-headers-path-system "/usr/include/c++/5")
-(add-to-list 'company-c-headers-path-system "/usr/local")
- 
+(setq company-c-headers-path-system lst_sys_include_dirs)
+
 ;;ggtags
 ;; (require 'ggtags)
 ;; (add-hook 'c-mode-hook 'ggtags-mode)

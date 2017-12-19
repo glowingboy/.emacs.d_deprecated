@@ -31,7 +31,7 @@
 ;;		 company-rtags
 ;;		 irony
 ;;		 company-irony
-		 flycheck
+;;		 flycheck
 ;;		 flycheck-irony
 ;;		 flycheck-rtags
 		 company-c-headers
