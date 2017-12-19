@@ -64,7 +64,7 @@
     )
   )
 
-(add-hook 'find-file-hook 'fs-p-check-proj-file)
+;;(add-hook 'find-file-hook 'fs-p-check-proj-file)
 
 
 (setq fs-proj-usr-include-path ())
